@@ -1,5 +1,7 @@
 package booker.entities;
 
+import java.util.List;
+
 public class User {
 
     private String name;
@@ -8,7 +10,7 @@ public class User {
 
     private String hashPassword;
 
-   // private List<Ticket> ticketsBooked;
+    private List<Ticket> ticketsBooked;
 
     private String userId;
 }
