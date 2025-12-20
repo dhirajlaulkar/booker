@@ -44,5 +44,19 @@ public class Train {
         this.trainNo = trainNo;
     }
 
+    public void setTrainId(String trainId) {
+        this.trainId = trainId;
+    }
 
+    public void setStationTimes(Map<String, String> stationTimes) {
+        this.stationTimes = stationTimes;
+    }
+
+    public void setStations(List<String> stations) {
+        this.stations = stations;
+    }
+
+    public String getTrainInfo(){
+        return String.format("Train ID : %s Train No: %s", trainId, trainNo);
+    }
 }
