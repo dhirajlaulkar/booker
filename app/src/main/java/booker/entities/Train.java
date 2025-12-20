@@ -11,4 +11,38 @@ public class Train {
     private List<List<Integer>> seats;
     private Map<String, String> stationTimes;
     private List<String> stations;
+
+    public Train(String trainId, String trainNo, List<List<Integer>> seats, Map<String, String> stationTimes,List<String> stations){
+        this.trainId =trainId;
+        this.trainNo = trainNo;
+        this.seats =seats;
+        this.stationTimes =stationTimes;
+        this.stations =stations;
+    }
+
+    public List<String> getStations(){
+        return stations;
+    }
+
+    public List<List<Integer>> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<List<Integer>> seats) {
+        this.seats = seats;
+    }
+
+    public String getTrainId() {
+        return trainId;
+    }
+
+    public String getTrainNo() {
+        return trainNo;
+    }
+
+    public void setTrainNo(String trainNo) {
+        this.trainNo = trainNo;
+    }
+
+
 }
