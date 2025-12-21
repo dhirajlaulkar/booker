@@ -1,6 +1,7 @@
 package booker.services;
 
 import booker.entities.User;
+import booker.util.UserServiceUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -24,11 +25,11 @@ public class UserBookingService  {
     }
 
     public Boolean loginUser(){
-        Optional<User> foundUser =userList.stream().filter(user1 ->{
-            return user1.getName().equals(user.getName())&& UserServiceUtil.checkPassword(user.getPassword(),user1.getHasehedPassword())}).findFirst();
+        Optional<User> foundUser =userList.stream().filter(user1 ->
+             user1.getName().equals(user.getName())&& UserServiceUtil.checkPassword(user.getPassword(),user1.getHashedPassword())).findFirst();
         return foundUser.isPresent();
         }
-    }
+
 
     public Boolean signUp(User user1){
         try{
