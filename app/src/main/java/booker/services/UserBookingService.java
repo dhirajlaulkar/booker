@@ -42,4 +42,9 @@ public class UserBookingService  {
         }
     }
 
+    private saveUserListToFile() throws IOException {
+        File usersFile =new File (USERS_PATH);
+        objectMapper.writeValue(usersFile, userList);
+    }
+
 }
