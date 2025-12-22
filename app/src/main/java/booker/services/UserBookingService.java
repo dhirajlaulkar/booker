@@ -34,7 +34,11 @@ public class UserBookingService  {
     public Boolean signUp(User user1){
         try{
             userList.add(user1);
-            saveUserListToFile();
+            try {
+                saveUserListToFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             return Boolean.TRUE;
             fetch(IOException ex){
                 return Boolean.FALSE;
@@ -42,9 +46,32 @@ public class UserBookingService  {
         }
     }
 
-    private saveUserListToFile() throws IOException {
+    private void saveUserListToFile() throws IOException {
         File usersFile =new File (USERS_PATH);
         objectMapper.writeValue(usersFile, userList);
     }
+
+    public void fetchBooking(){
+        user.printTickets();
+    }
+
+    public Boolean cancelBooking(String ticketId) {
+        try {
+            boolean ticketFound = userList.stream()
+                    .map(User::getTicketsBooked)
+                    .anyMatch(tickets -> tickets.removeIf(ticket ->
+                            ticket.getTicketId() != null && ticket.getTicketId().equals(ticketId)
+                    ));
+
+            if (ticketFound) {
+                saveUserListToFile();
+            }
+
+            return ticketFound;
+
+        } catch (IOException e) {
+            System.err.println("Error saving user list to file: " + e.getMessage());
+            return Boolean.FALSE;
+        }
 
 }
