@@ -20,9 +20,20 @@ public class UserBookingService  {
 
     public UserBookingService(User user1) throws IOException {
         this.user=user1;
-        File users=new File(USERS_PATH);
-        userList= objectMapper.readValue(users, new TypeReference<List<User>>() {});
+        loadUsers();
     }
+
+    public UserBookingService() throws IOException{
+
+        loadUsers();
+
+    }
+
+     public List<User> loadUsers()throws IOException{
+         File users =new File(USERS_PATH);
+         userList =objectMapper.readValue(users, new TypeReference<List<User>>(){});
+     }
+}
 
     public Boolean loginUser(){
         Optional<User> foundUser =userList.stream().filter(user1 ->
