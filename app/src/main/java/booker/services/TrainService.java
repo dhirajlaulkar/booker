@@ -11,4 +11,10 @@ public class TrainService {
                 .collect(Collectors.toList());
     }
 
+    private boolean validateTrain(Train train, String source, String destination) {
+        List<String> stations = train.getStations();
+        int sourceIndex = stations.indexOf(source.toLowerCase());
+        int destinationIndex = stations.indexOf(destination.toLowerCase());
+        return sourceIndex != -1 && destinationIndex != -1 && sourceIndex < destinationIndex;
+    }
 }
