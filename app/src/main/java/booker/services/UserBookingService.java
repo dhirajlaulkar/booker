@@ -84,4 +84,14 @@ public class UserBookingService {
             return Boolean.FALSE;
         }
     }
+
+    public List<Train> getTrains(String source, String destination) {
+        try {
+            TrainService trainService = new TrainService();
+            return trainService.getTrains(source, destination);
+        } catch (IOException e) {
+            System.err.println("Error getting trains: " + e.getMessage());
+            return null;
+        }
+    }
 }
