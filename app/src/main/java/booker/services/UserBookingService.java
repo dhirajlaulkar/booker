@@ -1,6 +1,7 @@
 package booker.services;
 
 import booker.entities.User;
+import booker.entities.Train;
 import booker.util.UserServiceUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -88,10 +89,10 @@ public class UserBookingService {
     public List<Train> getTrains(String source, String destination) {
         try {
             TrainService trainService = new TrainService();
-            return trainService.getTrains(source, destination);
+            return trainService.searchTrains(source, destination);
         } catch (IOException e) {
-            System.err.println("Error getting trains: " + e.getMessage());
+          
             return null;
         }
-    }
+    
 }

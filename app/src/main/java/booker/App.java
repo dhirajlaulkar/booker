@@ -44,6 +44,7 @@ public class App {
                             UUID.randomUUID().toString());
                     userBookingService.signUp(userToSignUp);
                     break;
+
                 case 2:
                     System.out.println("Enter your name");
                     String nameToLogin = scanner.next();
@@ -59,24 +60,10 @@ public class App {
                     }
                     break;
                 case 3:
-                    System.out.println("Fetch Bookings Functionality check");
+                    System.out.println("Fetch Bookings");
                     userBookingService.fetchBooking();
                     break;
-                case 4:
-                    System.out.println("Search Trains");
-                    break;
-                case 5:
-                    System.out.println("Selected Seat");
-                    break;
-                case 6: // Cancel booking
-                    System.out.println("Enter Ticket ID to cancel:");
-                    String ticketId = scanner.next();
-                    if (userBookingService.cancelBooking(ticketId)) {
-                        System.out.println("Booking cancelled successfully.");
-                    } else {
-                        System.out.println("Failed to cancel booking. Ticket not found.");
-                    }
-                    break;
+
             }
         }
 
