@@ -20,6 +20,13 @@ public class Train {
         this.stations = stations;
     }
 
+    public Train() {
+    }
+
+    public Map<String, String> getStationTimes() {
+        return stationTimes;
+    }
+
     public List<String> getStations() {
         return stations;
     }
