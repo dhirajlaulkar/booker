@@ -91,8 +91,9 @@ public class UserBookingService {
             TrainService trainService = new TrainService();
             return trainService.searchTrains(source, destination);
         } catch (IOException e) {
-          
+
             return null;
         }
-    
+
+    }
 }
