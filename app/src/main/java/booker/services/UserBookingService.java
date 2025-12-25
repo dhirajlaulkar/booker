@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 public class UserBookingService {
 
@@ -68,20 +69,25 @@ public class UserBookingService {
     }
 
     public Boolean cancelBooking(String ticketId) {
-        try {
-            boolean ticketFound = userList.stream()
-                    .filter(u -> u.getTicketsBooked() != null)
-                    .anyMatch(u -> u.getTicketsBooked()
-                            .removeIf(ticket -> ticket.getTicketId() != null && ticket.getTicketId().equals(ticketId)));
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the ticket id to cancel");
+        ticketId = s.next();
 
-            if (ticketFound) {
-                saveUserListToFile();
-                return Boolean.TRUE;
-            }
+        if (ticketId == null || ticketId.isEmpty()) {
+            System.out.println("Ticket ID cannot be null or empty.");
             return Boolean.FALSE;
+        }
 
-        } catch (IOException e) {
-            System.err.println("Error saving user list to file: " + e.getMessage());
+        String finalTicketId1 = ticketId;
+        boolean removed = user.getTicketsBooked().removeIf(ticket -> ticket.getTicketId().equals(finalTicketId1));
+
+        String finalTicketId = ticketId;
+        user.getTicketsBooked().removeIf(Ticket -> Ticket.getTicketId().equals(finalTicketId));
+        if (removed) {
+            System.out.println("Ticket with ID " + ticketId + " has been canceled.");
+            return Boolean.TRUE;
+        } else {
+            System.out.println("No ticket found with ID " + ticketId);
             return Boolean.FALSE;
         }
     }
@@ -90,10 +96,38 @@ public class UserBookingService {
         try {
             TrainService trainService = new TrainService();
             return trainService.searchTrains(source, destination);
-        } catch (IOException e) {
+        } catch (IOException ex) {
 
-            return null;
+            return new ArrayList<>();
         }
 
     }
+
+    public List<List<Integer>> fetchSeats(Train train) {
+        return train.getSeats();
+    }
+
+    public Boolean bookTrainSeat(Train train, int row, int seat) {
+        try {
+            TrainService trainService = new TrainService();
+            List<List<Integer>> seats = train.getSeats();
+            if (row >= 0 && row < seats.size() && seat >= 0 && seat < seats.get(row).size()) {
+                if (seats.get(row).get(seat) == 0) {
+                    seats.get(row).set(seat, 1);
+                    train.setSeats(seats);
+                    trainService.addTrain(train);
+                    return Boolean.TRUE;
+                } else {
+                    System.out.println("Seat already booked");
+                    return Boolean.FALSE;
+                }
+            } else {
+                System.out.println("Invalid seat");
+                return Boolean.FALSE;
+            }
+        } catch (IOException ex) {
+            return Boolean.FALSE;
+        }
+    }
+
 }
