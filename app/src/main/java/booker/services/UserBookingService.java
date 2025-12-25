@@ -20,29 +20,25 @@ public class UserBookingService {
 
     private final String USERS_PATH = "app/src/main/java/booker/localDb/users.json";
 
-    public UserBookingService(User user1) throws IOException {
-        this.user = user1;
-        loadUsers();
+    public UserBookingService(User user) throws IOException {
+        this.user = user;
+        loadUserListFromFile();
     }
 
     public UserBookingService() throws IOException {
-        loadUsers();
+        loadUserListFromFile();
     }
 
-    public List<User> loadUsers() throws IOException {
-        File users = new File(USERS_PATH);
-        if (users.exists()) {
-            userList = objectMapper.readValue(users, new TypeReference<List<User>>() {
-            });
-        } else {
-            userList = new ArrayList<>();
-        }
-        return userList;
+    private void loadUserListFromFile() throws IOException {
+        userList = objectMapper.readValue(new File(USERS_PATH), new TypeReference<List<User>>() {
+        });
     }
 
     public Boolean loginUser() {
-        Optional<User> foundUser = userList.stream().filter(user1 -> user1.getName().equals(user.getName())
-                && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword())).findFirst();
+        Optional<User> foundUser = userList.stream().filter(user1 -> {
+            return user1.getName().equals(user.getName())
+                    && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword());
+        }).findFirst();
         return foundUser.isPresent();
     }
 
@@ -62,8 +58,12 @@ public class UserBookingService {
     }
 
     public void fetchBooking() {
-        if (user != null) {
-            user.printTickets();
+        Optional<User> userFetched = userList.stream().filter(user1 -> {
+            return user1.getName().equals(user.getName())
+                    && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword());
+        }).findFirst();
+        if (userFetched.isPresent()) {
+            userFetched.get().printTickets();
         }
     }
 
