@@ -21,6 +21,7 @@ public class App {
             userBookingService = new UserBookingService();
         } catch (IOException ex) {
             System.out.println("There is Something Wrong");
+            scanner.close();
             return;
         }
         while (option != 7) {
@@ -56,6 +57,7 @@ public class App {
                     try {
                         userBookingService = new UserBookingService(userToLogin);
                     } catch (IOException ex) {
+                        scanner.close();
                         return;
                     }
                     break;
@@ -66,6 +68,6 @@ public class App {
 
             }
         }
-
+        scanner.close();
     }
 }
