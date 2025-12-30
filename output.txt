@@ -3,61 +3,36 @@ Reusing configuration cache.
 > Task :app:compileJava
 > Task :app:classes
 
-> Task :app:run
+> Task :app:run FAILED
 CWD: C:\MAKING_PROJECTS\booker
 Running Train Booking System
-com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Conflicting getter definitions for property "stations": booker.entities.Train#getStations() vs booker.entities.Train#getStationTimes()
- at [Source: (File); line: 1, column: 1]
-	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:62)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerFactory.buildBeanDeserializer(BeanDeserializerFactory.java:268)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerFactory.createBeanDeserializer(BeanDeserializerFactory.java:150)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createDeserializer2(DeserializerCache.java:414)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createDeserializer(DeserializerCache.java:349)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCache2(DeserializerCache.java:264)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCacheValueDeserializer(DeserializerCache.java:244)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache.findValueDeserializer(DeserializerCache.java:142)
-	at com.fasterxml.jackson.databind.DeserializationContext.findNonContextualValueDeserializer(DeserializationContext.java:581)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.resolve(BeanDeserializerBase.java:539)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCache2(DeserializerCache.java:293)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCacheValueDeserializer(DeserializerCache.java:244)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache.findValueDeserializer(DeserializerCache.java:142)
-	at com.fasterxml.jackson.databind.DeserializationContext.findContextualValueDeserializer(DeserializationContext.java:558)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.createContextual(CollectionDeserializer.java:188)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.createContextual(CollectionDeserializer.java:28)
-	at com.fasterxml.jackson.databind.DeserializationContext.handlePrimaryContextualization(DeserializationContext.java:765)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.resolve(BeanDeserializerBase.java:550)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCache2(DeserializerCache.java:293)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCacheValueDeserializer(DeserializerCache.java:244)
-	at com.fasterxml.jackson.databind.deser.DeserializerCache.findValueDeserializer(DeserializerCache.java:142)
-	at com.fasterxml.jackson.databind.DeserializationContext.findContextualValueDeserializer(DeserializationContext.java:558)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.createContextual(CollectionDeserializer.java:188)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.createContextual(CollectionDeserializer.java:28)
-	at com.fasterxml.jackson.databind.DeserializationContext.handleSecondaryContextualization(DeserializationContext.java:796)
-	at com.fasterxml.jackson.databind.DeserializationContext.findRootValueDeserializer(DeserializationContext.java:596)
-	at com.fasterxml.jackson.databind.ObjectMapper._findRootDeserializer(ObjectMapper.java:4733)
-	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4594)
-	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3433)
-	at booker.services.UserBookingService.loadUserListFromFile(UserBookingService.java:34)
-	at booker.services.UserBookingService.<init>(UserBookingService.java:30)
-	at booker.App.main(App.java:25)
-Caused by: java.lang.IllegalArgumentException: Conflicting getter definitions for property "stations": booker.entities.Train#getStations() vs booker.entities.Train#getStationTimes()
-	at com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.getGetter(POJOPropertyBuilder.java:448)
-	at com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition.getAccessor(BeanPropertyDefinition.java:188)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder._getSetterInfo(POJOPropertyBuilder.java:264)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.getMetadata(POJOPropertyBuilder.java:241)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertiesCollector._anyIndexed(POJOPropertiesCollector.java:1237)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertiesCollector._sortProperties(POJOPropertiesCollector.java:1139)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertiesCollector.collectAll(POJOPropertiesCollector.java:469)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertiesCollector.getPropertyMap(POJOPropertiesCollector.java:386)
-	at com.fasterxml.jackson.databind.introspect.POJOPropertiesCollector.getProperties(POJOPropertiesCollector.java:233)
-	at com.fasterxml.jackson.databind.introspect.BasicBeanDescription._properties(BasicBeanDescription.java:164)
-	at com.fasterxml.jackson.databind.introspect.BasicBeanDescription.findProperties(BasicBeanDescription.java:239)
-	at com.fasterxml.jackson.databind.deser.BasicDeserializerFactory._findCreatorsFromProperties(BasicDeserializerFactory.java:328)
-	at com.fasterxml.jackson.databind.deser.BasicDeserializerFactory._constructDefaultValueInstantiator(BasicDeserializerFactory.java:272)
-	at com.fasterxml.jackson.databind.deser.BasicDeserializerFactory.findValueInstantiator(BasicDeserializerFactory.java:223)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerFactory.buildBeanDeserializer(BeanDeserializerFactory.java:261)
-	... 30 more
+Choose option
+1. Sign up
+2. Login
+3. Fetch Bookings
+4. Search Trains
+5. Book a Seat
+6. Cancel my Booking
+7. Exit the App
+Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
+	at java.base/java.util.Scanner.next(Scanner.java:1602)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
+	at booker.App.main(App.java:39)
 
-BUILD SUCCESSFUL in 1s
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:run'.
+> Process 'command 'C:\Program Files\Java\jdk-21\bin\java.exe'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 1s
 2 actionable tasks: 2 executed
 Configuration cache entry reused.

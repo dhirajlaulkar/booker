@@ -1,5 +1,6 @@
 package booker.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,12 @@ public class Train {
     public Train() {
     }
 
+    @JsonProperty("stations")
     public Map<String, String> getStationTimes() {
         return stationTimes;
     }
 
+    @JsonIgnore
     public List<String> getStations() {
         return stations;
     }
