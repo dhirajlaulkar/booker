@@ -16,6 +16,7 @@ import java.util.UUID;
 public class App {
 
     public static void main(String[] args) {
+        System.out.println("CWD: " + System.getProperty("user.dir"));
         System.out.println("Running Train Booking System");
         Scanner scanner = new Scanner(System.in);
         int option = 0;
