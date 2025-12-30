@@ -34,5 +34,9 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'org.example.App'
+    mainClass = 'booker.App'
+}
+
+tasks.named('run') {
+    workingDir = rootProject.projectDir
 }
