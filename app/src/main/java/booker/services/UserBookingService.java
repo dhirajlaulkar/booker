@@ -19,7 +19,7 @@ public class UserBookingService {
     private List<User> userList;
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    private final String USERS_PATH = "app/src/main/java/booker/localDb/users.json";
+    private final String USERS_PATH = "app/src/main/java/booker/localDb/user.json";
 
     public UserBookingService(User user) throws IOException {
         this.user = user;
