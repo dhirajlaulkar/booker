@@ -1,5 +1,7 @@
 package booker.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Ticket {
 
     private String ticketId;
@@ -7,6 +9,7 @@ public class Ticket {
     private String userId;
     private String source;
     private String destination;
+    @JsonProperty("date_of_travel")
     private String dateOfTravel;
     private Train train;
 

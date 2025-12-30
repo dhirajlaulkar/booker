@@ -1,11 +1,15 @@
 package booker.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Train {
 
+    @JsonProperty("train_id")
     private String trainId;
+    @JsonProperty("train_no")
     private String trainNo;
     private List<List<Integer>> seats;
     private Map<String, String> stationTimes;
@@ -55,8 +59,10 @@ public class Train {
         this.trainId = trainId;
     }
 
+    @JsonProperty("stations")
     public void setStationTimes(Map<String, String> stationTimes) {
         this.stationTimes = stationTimes;
+        this.stations = new ArrayList<>(stationTimes.keySet());
     }
 
     public void setStations(List<String> stations) {
