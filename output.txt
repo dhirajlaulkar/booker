@@ -1,0 +1,30 @@
+Reusing configuration cache.
+> Task :app:processResources NO-SOURCE
+> Task :app:compileJava
+> Task :app:classes
+
+> Task :app:run
+CWD: C:\MAKING_PROJECTS\booker
+Running Train Booking System
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "user_id" (class booker.entities.User), not marked as ignorable (5 known properties: "hashPassword", "name", "userId", "ticketsBooked", "password"])
+ at [Source: (File); line: 3, column: 17] (through reference chain: java.util.ArrayList[0]->booker.entities.User["user_id"])
+	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:987)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1974)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1701)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1679)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:330)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:187)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer._deserializeFromArray(CollectionDeserializer.java:355)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:244)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:28)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4593)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3433)
+	at booker.services.UserBookingService.loadUserListFromFile(UserBookingService.java:34)
+	at booker.services.UserBookingService.<init>(UserBookingService.java:30)
+	at booker.App.main(App.java:25)
+
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 2 executed
+Configuration cache entry reused.
