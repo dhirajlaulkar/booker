@@ -1,11 +1,13 @@
 package booker.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Train {
 
     @JsonProperty("train_id")
@@ -72,6 +74,7 @@ public class Train {
         this.stations = stations;
     }
 
+    @JsonIgnore
     public String getTrainInfo() {
         return String.format("Train ID : %s Train No: %s", trainId, trainNo);
     }

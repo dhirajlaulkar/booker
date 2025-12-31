@@ -5,33 +5,14 @@ Reusing configuration cache.
 
 > Task :app:run
 Running Train Booking System
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "trainInfo" (class booker.entities.Train), not marked as ignorable (4 known properties: "train_no", "train_id", "seats", "stations"])
- at [Source: (File); line: 1, column: 242] (through reference chain: java.util.ArrayList[0]->booker.entities.User["tickets_booked"]->java.util.ArrayList[0]->booker.entities.Ticket["train"]->booker.entities.Train["trainInfo"])
-	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
-	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:987)
-	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1974)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1701)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1679)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:330)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:187)
-	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:324)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:187)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer._deserializeFromArray(CollectionDeserializer.java:355)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:244)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:28)
-	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:324)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:187)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer._deserializeFromArray(CollectionDeserializer.java:355)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:244)
-	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:28)
-	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
-	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4593)
-	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3433)
-	at booker.services.UserBookingService.loadUserListFromFile(UserBookingService.java:34)
-	at booker.services.UserBookingService.<init>(UserBookingService.java:30)
-	at booker.App.main(App.java:24)
+Choose option
+1. Sign up
+2. Login
+3. Fetch Bookings
+4. Search Trains
+5. Book a Seat
+6. Cancel my Booking
+7. Exit the App
 
 BUILD SUCCESSFUL in 1s
 2 actionable tasks: 2 executed
