@@ -23,7 +23,7 @@ public class App {
         try {
             userBookingService = new UserBookingService();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println("There is something wrong");
             return;
         }
         while (option != 7) {
