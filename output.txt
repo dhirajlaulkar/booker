@@ -13,6 +13,43 @@ Choose option
 5. Book a Seat
 6. Cancel my Booking
 7. Exit the App
+Type your source station
+Type your destination station
+1 Train id : bacs
+station Bangalore time: 13:50:00
+station Jaipur time: 13:50:00
+station Delhi time: 13:50:00
+1 Train id : back
+station Bangalore time: 13:50:00
+station Jaipur time: 13:50:00
+station Delhi time: 13:50:00
+Select a train by typing 1,2,3...
+Choose option
+1. Sign up
+2. Login
+3. Fetch Bookings
+4. Search Trains
+5. Book a Seat
+6. Cancel my Booking
+7. Exit the App
+Select a seat out of these seats
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+Select the seat by typing the row and column
+Enter the row
+Enter the column
+Booking your seat....
+Booked! Enjoy your journey
+Choose option
+1. Sign up
+2. Login
+3. Fetch Bookings
+4. Search Trains
+5. Book a Seat
+6. Cancel my Booking
+7. Exit the App
 
 BUILD SUCCESSFUL in 1s
 2 actionable tasks: 2 executed

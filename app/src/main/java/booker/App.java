@@ -26,6 +26,7 @@ public class App {
             System.out.println("There is something wrong");
             return;
         }
+        Train trainSelectedForBooking = new Train();
         while (option != 7) {
             System.out.println("Choose option");
             System.out.println("1. Sign up");
@@ -36,7 +37,7 @@ public class App {
             System.out.println("6. Cancel my Booking");
             System.out.println("7. Exit the App");
             option = scanner.nextInt();
-            Train trainSelectedForBooking = new Train();
+
             switch (option) {
                 case 1:
                     System.out.println("Enter the username to signup");

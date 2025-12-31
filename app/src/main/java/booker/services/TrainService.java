@@ -68,8 +68,18 @@ public class TrainService {
 
     private boolean validTrain(Train train, String source, String destination) {
         List<String> stations = train.getStations();
-        int sourceIndex = stations.indexOf(source.toLowerCase());
-        int destinationIndex = stations.indexOf(destination.toLowerCase());
+        int sourceIndex = -1;
+        int destinationIndex = -1;
+
+        for (int i = 0; i < stations.size(); i++) {
+            if (stations.get(i).equalsIgnoreCase(source)) {
+                sourceIndex = i;
+            }
+            if (stations.get(i).equalsIgnoreCase(destination)) {
+                destinationIndex = i;
+            }
+        }
+
         return sourceIndex != -1 && destinationIndex != -1 && sourceIndex < destinationIndex;
     }
 }
