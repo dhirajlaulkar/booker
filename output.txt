@@ -1,3 +1,4 @@
+Starting a Gradle Daemon, 2 incompatible and 3 stopped Daemons could not be reused, use --status for details
 Reusing configuration cache.
 > Task :app:processResources NO-SOURCE
 > Task :app:compileJava
@@ -19,7 +20,7 @@ Type your destination station
 station Bangalore time: 13:50:00
 station Jaipur time: 13:50:00
 station Delhi time: 13:50:00
-1 Train id : back
+2 Train id : back
 station Bangalore time: 13:50:00
 station Jaipur time: 13:50:00
 station Delhi time: 13:50:00
@@ -33,7 +34,7 @@ Choose option
 6. Cancel my Booking
 7. Exit the App
 Select a seat out of these seats
-0 0 0 0 0 0 
+1 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
@@ -41,7 +42,8 @@ Select the seat by typing the row and column
 Enter the row
 Enter the column
 Booking your seat....
-Booked! Enjoy your journey
+Seat already booked
+Can't book this seat
 Choose option
 1. Sign up
 2. Login
@@ -51,6 +53,6 @@ Choose option
 6. Cancel my Booking
 7. Exit the App
 
-BUILD SUCCESSFUL in 1s
+BUILD SUCCESSFUL in 5s
 2 actionable tasks: 2 executed
 Configuration cache entry reused.
