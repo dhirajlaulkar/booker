@@ -91,6 +91,10 @@ public class App {
                 case 5:
                     System.out.println("Select a seat out of these seats");
                     List<List<Integer>> seats = userBookingService.fetchSeats(trainSelectedForBooking);
+                    if (seats == null) {
+                        System.out.println("No train selected. Please search for trains first.");
+                        break;
+                    }
                     for (List<Integer> row : seats) {
                         for (Integer val : row) {
                             System.out.print(val + " ");

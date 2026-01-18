@@ -1,0 +1,29 @@
+Reusing configuration cache.
+> Task :app:processResources NO-SOURCE
+> Task :app:compileJava
+> Task :app:classes
+
+> Task :app:run
+Running Train Booking System
+Choose option
+1. Sign up
+2. Login
+3. Fetch Bookings
+4. Search Trains
+5. Book a Seat
+6. Cancel my Booking
+7. Exit the App
+Select a seat out of these seats
+No train selected. Please search for trains first.
+Choose option
+1. Sign up
+2. Login
+3. Fetch Bookings
+4. Search Trains
+5. Book a Seat
+6. Cancel my Booking
+7. Exit the App
+
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 2 executed
+Configuration cache entry reused.
