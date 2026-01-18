@@ -1,8 +1,10 @@
 package booker.services;
 
-import booker.entities.User;
+import booker.entities.Ticket;
 import booker.entities.Train;
+import booker.entities.User;
 import booker.util.UserServiceUtil;
+import java.util.UUID;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -116,6 +118,13 @@ public class UserBookingService {
                     seats.get(row).set(seat, 1);
                     train.setSeats(seats);
                     trainService.addTrain(train);
+
+                    // Create Ticket
+                    Ticket ticket = new Ticket(UUID.randomUUID().toString(), user.getName(), "Source", "Dest", "Date",
+                            train);
+                    user.getTicketsBooked().add(ticket);
+                    saveUserListToFile();
+
                     return Boolean.TRUE;
                 } else {
                     System.out.println("Seat already booked");

@@ -1,10 +1,9 @@
-Starting a Gradle Daemon, 2 incompatible and 3 stopped Daemons could not be reused, use --status for details
 Reusing configuration cache.
 > Task :app:processResources NO-SOURCE
 > Task :app:compileJava
 > Task :app:classes
 
-> Task :app:run
+> Task :app:run FAILED
 Running Train Booking System
 Choose option
 1. Sign up
@@ -14,17 +13,9 @@ Choose option
 5. Book a Seat
 6. Cancel my Booking
 7. Exit the App
-Type your source station
-Type your destination station
-1 Train id : bacs
-station Bangalore time: 13:50:00
-station Jaipur time: 13:50:00
-station Delhi time: 13:50:00
-2 Train id : back
-station Bangalore time: 13:50:00
-station Jaipur time: 13:50:00
-station Delhi time: 13:50:00
-Select a train by typing 1,2,3...
+Enter the username to Login
+Enter the password to login
+Login Successful!
 Choose option
 1. Sign up
 2. Login
@@ -33,17 +24,6 @@ Choose option
 5. Book a Seat
 6. Cancel my Booking
 7. Exit the App
-Select a seat out of these seats
-1 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-Select the seat by typing the row and column
-Enter the row
-Enter the column
-Booking your seat....
-Seat already booked
-Can't book this seat
 Choose option
 1. Sign up
 2. Login
@@ -52,7 +32,25 @@ Choose option
 5. Book a Seat
 6. Cancel my Booking
 7. Exit the App
+Exception in thread "main" java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:947)
+	at java.base/java.util.Scanner.next(Scanner.java:1602)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
+	at booker.App.main(App.java:39)
 
-BUILD SUCCESSFUL in 5s
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:run'.
+> Process 'command 'C:\Program Files\Java\jdk-21\bin\java.exe'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2s
 2 actionable tasks: 2 executed
 Configuration cache entry reused.
