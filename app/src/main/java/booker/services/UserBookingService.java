@@ -123,9 +123,17 @@ public class UserBookingService {
                     Ticket ticket = new Ticket(UUID.randomUUID().toString(), user.getName(), "Source", "Dest", "Date",
                             train);
                     user.getTicketsBooked().add(ticket);
-                    saveUserListToFile();
 
-                    return Boolean.TRUE;
+                    // Update user in userList to ensure persistence
+                    Optional<User> userInList = userList.stream().filter(u -> u.getName().equals(user.getName()))
+                            .findFirst();
+                    if (userInList.isPresent()) {
+                        userInList.get().getTicketsBooked().add(ticket);
+                        saveUserListToFile();
+                        return Boolean.TRUE;
+                    } else {
+                        return Boolean.FALSE;
+                    }
                 } else {
                     System.out.println("Seat already booked");
                     return Boolean.FALSE;
