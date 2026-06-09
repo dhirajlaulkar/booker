@@ -7,6 +7,7 @@ public class User {
 
     private String name;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @JsonProperty("hashedPassword")
@@ -46,8 +47,10 @@ public class User {
     }
 
     public void printTickets() {
-        for (int i = 0; i < ticketsBooked.size(); i++) {
-            System.out.println(ticketsBooked.get(i).getTicketInfo());
+        if (ticketsBooked != null) {
+            for (Ticket ticket : ticketsBooked) {
+                System.out.println(ticket.getTicketInfo());
+            }
         }
     }
 
@@ -69,5 +72,9 @@ public class User {
 
     public String getHashedPassword() {
         return hashPassword;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
