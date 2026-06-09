@@ -1,73 +1,46 @@
 package booker.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
 import booker.entities.Train;
+import booker.exceptions.ResourceNotFoundException;
+import booker.repositories.TrainRepository;
+import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.util.Optional;
-import java.util.OptionalInt;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
+@Service
 public class TrainService {
 
-    private List<Train> trainList;
-    private ObjectMapper objectMapper = new ObjectMapper();
-    private static final String TRAIN_DB_PATH = "app/src/main/java/booker/localDb/trains.json";
+    private final TrainRepository trainRepository;
 
-    public TrainService() throws IOException {
-        File trains = new File(TRAIN_DB_PATH);
-
-        trainList = objectMapper.readValue(trains, new TypeReference<List<Train>>() {
-        });
-    };
+    public TrainService(TrainRepository trainRepository) {
+        this.trainRepository = trainRepository;
+    }
 
     public List<Train> searchTrains(String source, String destination) {
-        return trainList.stream().filter(train -> validTrain(train, source, destination))
+        return trainRepository.findAll().stream()
+                .filter(train -> validTrain(train, source, destination))
                 .collect(Collectors.toList());
     }
 
-    public void addTrain(Train newTrain) {
-        Optional<Train> existingTrain = trainList.stream()
-                .filter(train -> train.getTrainId().equalsIgnoreCase(newTrain.getTrainId()))
-                .findFirst();
-
-        if (existingTrain.isPresent()) {
-            updateTrain(newTrain);
-        } else {
-            trainList.add(newTrain);
-            saveTrainListToFile();
-        }
-
+    public Train getTrainById(String trainId) {
+        return trainRepository.findById(trainId)
+                .orElseThrow(() -> new ResourceNotFoundException("Train with ID '" + trainId + "' not found"));
     }
 
-    public void updateTrain(Train updatedTrain) {
-        OptionalInt index = IntStream.range(0, trainList.size())
-                .filter(i -> trainList.get(i).getTrainId().equalsIgnoreCase(updatedTrain.getTrainId()))
-                .findFirst();
-
-        if (index.isPresent()) {
-            trainList.set(index.getAsInt(), updatedTrain);
-            saveTrainListToFile();
-        } else {
-            addTrain(updatedTrain);
-        }
+    public Train addTrain(Train newTrain) {
+        return trainRepository.save(newTrain);
     }
 
-    private void saveTrainListToFile() {
-        try {
-            objectMapper.writeValue(new File(TRAIN_DB_PATH), trainList);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Train updateTrain(Train updatedTrain) {
+        return trainRepository.save(updatedTrain);
     }
 
     private boolean validTrain(Train train, String source, String destination) {
         List<String> stations = train.getStations();
+        if (stations == null) {
+            return false;
+        }
         int sourceIndex = -1;
         int destinationIndex = -1;
 
